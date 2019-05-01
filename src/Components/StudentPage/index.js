@@ -5,10 +5,12 @@ import { Timeline, TimelineEvent } from "react-event-timeline";
 const StudentPage = ({ props }) => {
   // display the schedule
   // dynamically add the relevant timings and number of points
+  // problem if the current date has no added content.
+  console.log(props);
 
   return (
     <>
-      <div>{props.date}</div>
+      <div>{props.date ? props.date : "1/5/2019"}</div>
       <Timeline>
         {props.daysContent.map(item => (
           <TimelineEvent title={item.sessionTimes}>
