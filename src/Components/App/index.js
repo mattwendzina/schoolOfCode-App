@@ -3,10 +3,13 @@ import StudentPage from "../StudentPage/index";
 import "./App.css";
 import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
+import Calendar from "react-calendar";
+import moment from "moment";
+import AdminPage from "../AdminPage";
 
 const allContent = [
   {
-    date: "30/4/2019",
+    date: "30/04/2019",
     daysContent: [
       {
         sessionTimes: "09.00 - 10.00",
@@ -31,7 +34,7 @@ const allContent = [
     ]
   },
   {
-    date: "29/4/2019",
+    date: "29/04/2019",
     daysContent: [
       {
         sessionTimes: "",
@@ -41,7 +44,7 @@ const allContent = [
     ]
   },
   {
-    date: "28/4/2019",
+    date: "28/04/2019",
     daysContent: [
       {
         sessionTimes: "",
@@ -51,7 +54,7 @@ const allContent = [
     ]
   },
   {
-    date: "1/5/2019",
+    date: "01/05/2019",
     daysContent: [
       {
         sessionTimes: "09.00 - 10.00",
@@ -76,7 +79,27 @@ const allContent = [
     ]
   },
   {
-    date: "2/5/2019",
+    date: "02/05/2019",
+    daysContent: [
+      {
+        sessionTimes: "09.00 - 10.00",
+        contentTitle: "Sort out the Freaking dates",
+        contentURL: ""
+      },
+      {
+        sessionTimes: "13.00 - 14.00",
+        contentTitle: "React Hooks",
+        contentURL: ""
+      },
+      {
+        sessionTimes: "15.00 - 16.00",
+        contentTitle: "React useContext()",
+        contentURL: "https://reactjs.org/docs/components-and-props.html"
+      }
+    ]
+  },
+  {
+    date: "02/05/2019",
     daysContent: [
       {
         sessionTimes: "09.00 - 10.00",
@@ -106,7 +129,7 @@ const allContent = [
     ]
   },
   {
-    date: "26/4/2019",
+    date: "26/04/2019",
     daysContent: [
       {
         sessionTimes: "",
@@ -124,9 +147,19 @@ firebase.initializeApp({
 function App() {
   const [signedIn, setSignedIn] = useState(false);
   const d = new Date();
-  const todaysDate =
-    d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
+  const todaysDate = moment().format("DD/MM/YYYY");
   const [selectedDate, setSelectedDate] = useState(todaysDate);
+
+  const convertDate = isoDate => {
+    const convertedDate = moment(isoDate).format("DD/MM/YYYY");
+    console.log("this moment", moment().format("DD/MM/YYYY"));
+    console.log(selectedDate);
+    console.log("convertedDate", convertedDate);
+    console.log(typeof convertedDate);
+    console.log("isodate", isoDate);
+    setSelectedDate(convertedDate);
+  };
+
   // function to find the selected date from allContent
   const contentToBeDisplayed = allContent.find(
     obj => obj.date === selectedDate
@@ -135,10 +168,16 @@ function App() {
   // buttons to toggle date
   const changeDate = num => {
     console.log(selectedDate);
-    console.log(d.getDate());
+    console.log("date", d.getDate());
     console.log(num);
+
     return setSelectedDate(
-      d.getDate() + num + "/" + (d.getMonth() + 1) + "/" + d.getFullYear()
+      Number(selectedDate[0]) +
+        num +
+        "/" +
+        (d.getMonth() + 1) +
+        "/" +
+        d.getFullYear()
     );
   };
 
@@ -178,6 +217,11 @@ function App() {
               style={{ width: "5vh", height: "5vh", borderRadius: "100%" }}
             />
           </h1>
+          <Calendar
+            onClickDay={value => {
+              convertDate(value);
+            }}
+          />
           <button
             onClick={() => {
               firebase.auth().signOut();
@@ -188,6 +232,7 @@ function App() {
           Schedule
           <button onClick={() => changeDate(-1)}>&lt;</button>
           <button onClick={() => changeDate(1)}>&gt;</button>
+          <AdminPage />
           <StudentPage props={contentToBeDisplayed} />
         </div>
       )}

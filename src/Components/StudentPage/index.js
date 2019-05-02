@@ -2,15 +2,21 @@ import React from "react";
 //import css from "./index.module.css";
 import { Timeline, TimelineEvent } from "react-event-timeline";
 
+import PropTypes from "prop-types";
+
 const StudentPage = ({ props }) => {
   // display the schedule
   // dynamically add the relevant timings and number of points
   // problem if the current date has no added content.
-  console.log(props);
-
+  console.log("studentPage props", props.date);
+  console.log("studentPage props", props.daysContent);
   return (
     <>
-      <div>{props.date ? props.date : "1/5/2019"}</div>
+      <div>
+        {props.defaultUsed
+          ? `${props.defaultUsed} ${props.date}`
+          : `${props.date}`}
+      </div>
       <Timeline>
         {props.daysContent.map(item => (
           <TimelineEvent title={item.sessionTimes}>
@@ -30,15 +36,33 @@ const StudentPage = ({ props }) => {
   );
 };
 
-{
-  /* <TimelineEvent title="10.00 - 11.00">
-JavaScript Fat Arrows
-</TimelineEvent>
-<TimelineEvent title="11.00 - 12.00">HTML Accessibility</TimelineEvent>
-<TimelineEvent title="13.00 - 14.00">AWS serverless</TimelineEvent>
-<TimelineEvent title="14.00 - 15.00">REST API</TimelineEvent>
-<TimelineEvent title="15.00 - 16.00">React</TimelineEvent>
-<TimelineEvent title="16.00 - 17.00">React useContext()</TimelineEvent> */
-}
+StudentPage.propTypes = {
+  date: PropTypes.string,
+  daysContent: PropTypes.array
+};
+
+StudentPage.defaultProps = {
+  props: {
+    defaultUsed: "There is currently no schedule uploaded for this day.",
+    date: "02/05/2019",
+    daysContent: [
+      {
+        sessionTimes: "09.00 - 10.00",
+        contentTitle: "Sort out the Freaking dates",
+        contentURL: ""
+      },
+      {
+        sessionTimes: "13.00 - 14.00",
+        contentTitle: "React Hooks",
+        contentURL: ""
+      },
+      {
+        sessionTimes: "15.00 - 16.00",
+        contentTitle: "React useContext()",
+        contentURL: "https://reactjs.org/docs/components-and-props.html"
+      }
+    ]
+  }
+};
 
 export default StudentPage;
