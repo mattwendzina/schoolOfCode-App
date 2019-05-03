@@ -6,6 +6,8 @@ const AdminPage = () => {
   // ability to upload schedule
 
   // a way to add several links
+  // description <text area ></text>
+  // content Urls
   // a way to review schedule
   // a way to upload video
   // a way to upload files
