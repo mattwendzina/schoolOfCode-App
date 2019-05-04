@@ -8,7 +8,7 @@ const AdminPageOptions = props => {
     "13.00 - 14.00",
     "14.00 - 15.00",
     "15.00 - 16.00",
-    "16.00 - 17.00"
+    "16.00 - 17.00 "
   ];
 
   const setTimeInParent = event => {
@@ -17,11 +17,16 @@ const AdminPageOptions = props => {
   };
 
   return (
-    <select value={props.startValue} onChange={event => setTimeInParent(event)}>
-      {scheduleTimings.map(item => (
-        <option value={item}>{item}</option>
-      ))}
-    </select>
+    <>
+      <select
+        value={props.startValue}
+        onChange={event => setTimeInParent(event)}
+      >
+        {scheduleTimings.map(item => (
+          <option value={item}>{item}</option>
+        ))}
+      </select>
+    </>
   );
 };
 

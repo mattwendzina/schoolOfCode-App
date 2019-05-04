@@ -145,10 +145,32 @@ firebase.initializeApp({
   authDomain: "what-did-i-miss-88f32.firebaseapp.com"
 });
 function App() {
+  const [fullScheduleData, setFullScheduleData] = useState(allContent);
   const [signedIn, setSignedIn] = useState(false);
   const d = new Date();
   const todaysDate = moment().format("DD/MM/YYYY");
   const [selectedDate, setSelectedDate] = useState(todaysDate);
+
+  const appendAdminUpload = (date, dataToAppend) => {
+    // DOES NOT overwrite an existing date, simply adds a new one
+    // don't allow duplicate dates overwrite with the new one
+    // means searching with "find" then getting index (.findIndex())
+    const duplicateDate = fullScheduleData.findIndex(
+      item => item.date === date
+    );
+    // then slicing up to that one and then replacing it and
+    // slicing to the end
+    duplicateDate < 0
+      ? setFullScheduleData([
+          ...fullScheduleData.slice(),
+          { date: date, daysContent: dataToAppend.slice() }
+        ])
+      : setFullScheduleData([
+          ...fullScheduleData.slice(0, duplicateDate),
+          { date: date, daysContent: dataToAppend.slice() },
+          ...fullScheduleData.slice(duplicateDate + 1)
+        ]);
+  };
 
   const convertDate = isoDate => {
     const convertedDate = moment(isoDate).format("DD/MM/YYYY");
@@ -161,7 +183,7 @@ function App() {
   };
 
   // function to find the selected date from allContent
-  const contentToBeDisplayed = allContent.find(
+  const contentToBeDisplayed = fullScheduleData.find(
     obj => obj.date === selectedDate
   );
 
@@ -202,6 +224,7 @@ function App() {
 
   return (
     <>
+      {console.log("on reload", fullScheduleData)}
       {!signedIn ? (
         <StyledFirebaseAuth
           uiConfig={uiConfig}
@@ -232,7 +255,11 @@ function App() {
           Schedule
           <button onClick={() => changeDate(-1)}>&lt;</button>
           <button onClick={() => changeDate(1)}>&gt;</button>
-          <AdminPage />
+          <AdminPage
+            props={(date, dataToAppend) =>
+              appendAdminUpload(date, dataToAppend)
+            }
+          />
           <StudentPage props={contentToBeDisplayed} />
         </div>
       )}

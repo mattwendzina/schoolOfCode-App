@@ -13,9 +13,14 @@ const StudentPage = ({ props }) => {
   return (
     <>
       <div>
-        {props.defaultUsed
-          ? `${props.defaultUsed} ${props.date}`
-          : `${props.date}`}
+        {props.defaultUsed ? (
+          <>
+            <p>{props.defaultUsed}</p>
+            <p>Showing schedule for: {props.date}</p>
+          </>
+        ) : (
+          `${props.date}`
+        )}
       </div>
       <Timeline>
         {props.daysContent.map(item => (
@@ -24,7 +29,9 @@ const StudentPage = ({ props }) => {
               <div>
                 {item.contentTitle}
                 <br />
-                <a href={item.contentURL}>{item.contentURL}</a>
+                <a href={`https://${item.contentURL}`} target="_blank">
+                  {item.contentURL}
+                </a>
               </div>
             ) : (
               <div>{item.contentTitle}</div>
@@ -43,7 +50,7 @@ StudentPage.propTypes = {
 
 StudentPage.defaultProps = {
   props: {
-    defaultUsed: "There is currently no schedule uploaded for this day.",
+    defaultUsed: `There is currently no schedule uploaded for today.`,
     date: "02/05/2019",
     daysContent: [
       {
