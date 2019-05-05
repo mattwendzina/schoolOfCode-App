@@ -1,6 +1,7 @@
 import React from "react";
 //import css from "./index.module.css";
 import { Timeline, TimelineEvent } from "react-event-timeline";
+import moment from "moment";
 
 import PropTypes from "prop-types";
 
@@ -8,6 +9,7 @@ const StudentPage = ({ props }) => {
   // display the schedule
   // dynamically add the relevant timings and number of points
   // problem if the current date has no added content.
+  console.log("moment", moment().format("L"));
   console.log("studentPage props", props.date);
   console.log("studentPage props", props.daysContent);
   return (
@@ -51,6 +53,11 @@ StudentPage.propTypes = {
 StudentPage.defaultProps = {
   props: {
     defaultUsed: `There is currently no schedule uploaded for today.`,
+    // use last updated key
+    // get the timestamp from mongoDB (if this doesn't show the correct date add a last Updated key)
+    //ObjectId("507c7f79bcf86cd7994f6c0e").getTimestamp()
+    // returns ISODate("2012-10-15T21:26:17Z")
+    // use moment().format("L") to format it into the correct time
     date: "02/05/2019",
     daysContent: [
       {

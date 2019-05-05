@@ -3,17 +3,17 @@ import Paper from "@material-ui/core/Paper";
 import FeedbackCard from "../FeedbackCard";
 
 const data = [
-  { title: "React", rating: 10, complete: false, date: "05/05/19" },
+  { title: "React", rating: 0, complete: false, date: "05/05/19" },
   {
     title: "React Hooks Overview",
     rating: 0,
     complete: false,
     date: "05/05/19"
   },
-  { title: "React Material UI", rating: 7, complete: false, date: "05/05/19" },
-  { title: "React Proptypes", rating: 3, complete: false, date: "05/05/19" },
-  { title: "React useContext", rating: 1, complete: false, date: "05/05/19" },
-  { title: "React useReducer", rating: 2, complete: false, date: "05/05/19" },
+  { title: "React Material UI", rating: 0, complete: false, date: "05/05/19" },
+  { title: "React Proptypes", rating: 0, complete: false, date: "05/05/19" },
+  { title: "React useContext", rating: 0, complete: false, date: "05/05/19" },
+  { title: "React useReducer", rating: 0, complete: false, date: "05/05/19" },
   {
     title: "React useful JS patterns",
     rating: 0,
@@ -26,7 +26,7 @@ const FeedbackTray = () => {
   const [carouselIndex, setCarouselIndex] = useState(0);
   const [dummyFeedbackData, setDummyFeedbackData] = useState(data);
 
-  const updateFeedback = (titleMatch, newRating) => {
+  const updateFeedback = (titleMatch, newRating, newComment) => {
     const matchedIndex = dummyFeedbackData.findIndex(
       item => titleMatch === item.title
     );
@@ -35,13 +35,15 @@ const FeedbackTray = () => {
       {
         ...dummyFeedbackData[matchedIndex],
         complete: true,
-        rating: newRating * 2
+        rating: newRating * 2,
+        comment: newComment
       },
       ...dummyFeedbackData.slice(matchedIndex + 1)
     ]);
   };
   return (
     <>
+      {console.log("dummyData", dummyFeedbackData)}
       <button
         onClick={() => {
           if (carouselIndex === dummyFeedbackData.length - 3) {
