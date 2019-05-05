@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 const CommentBox = ({ title, update, value, reset }) => {
   const [comment, setComment] = useState("");
-  //   useEffect(() => leaveComment);
   return (
     <form>
       <textarea
