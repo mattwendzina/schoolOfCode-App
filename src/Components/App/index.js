@@ -6,6 +6,7 @@ import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import Calendar from "react-calendar";
 import moment from "moment";
 import AdminPage from "../AdminPage";
+import FeedbackTray from "../FeedbackTray";
 
 const allContent = [
   {
@@ -261,6 +262,7 @@ function App() {
             }
           />
           <StudentPage props={contentToBeDisplayed} />
+          <FeedbackTray />
         </div>
       )}
     </>
