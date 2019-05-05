@@ -134,9 +134,13 @@ const AdminPage = props => {
                 }
               />
               <br />
+              <br />
               <>
                 Description: <textarea name="Description" />
               </>
+              <br />
+              <br />
+              <input type="file" multiple />
               <br />
               {daysSchedule[ind].contentURL.length > 0 ? (
                 daysSchedule[ind].contentURL.map((_, contentIndex) =>
