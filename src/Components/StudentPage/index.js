@@ -7,9 +7,6 @@ import PropTypes from "prop-types";
 
 const StudentPage = ({ props }) => {
   // display the schedule
-  // dynamically add the relevant timings and number of points
-  // problem if the current date has no added content.
-  console.log("moment", moment().format("L"));
   console.log("studentPage props", props.date);
   console.log("studentPage props", props.daysContent);
   return (

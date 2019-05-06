@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import css from "./AdminPage.module.css";
-import AdminPageOptions from "./AdminPageOptions";
+import css from "./AdminUploadSchedulePage.module.css";
+import AdminPageScheduleTimes from "../AdminPageScheduleTimes";
 import moment from "moment";
 
-const AdminPage = props => {
+const AdminUploadSchedulePage = props => {
   // ability to upload schedule
   // pass down a function that adds the days schedule up to the state in the app
   // multiple content Urls
@@ -28,7 +28,6 @@ const AdminPage = props => {
 
   const formHandler = event => {
     event.preventDefault();
-    console.log(event);
     const scheduleToBeApended = daysSchedule.slice();
     props.props(selectedDate, scheduleToBeApended);
   };
@@ -95,7 +94,6 @@ const AdminPage = props => {
       ...daysSchedule.slice(index + 1)
     ]);
   };
-  //onSubmit={event => formHandler(event)}
   return (
     <form>
       <fieldset>
@@ -112,11 +110,10 @@ const AdminPage = props => {
           />
         </div>
         {daysSchedule.map((_, ind) => {
-          console.log("first map", daysSchedule);
           return (
             <>
               <br />
-              <AdminPageOptions
+              <AdminPageScheduleTimes
                 props={(ind, newTime) => handleSessionTime(ind, newTime)}
                 index={ind}
                 startValue={daysSchedule[ind].sessionTimes}
@@ -237,4 +234,4 @@ const AdminPage = props => {
   );
 };
 
-export default AdminPage;
+export default AdminUploadSchedulePage;

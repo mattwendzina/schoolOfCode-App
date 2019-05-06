@@ -1,6 +1,6 @@
 import React from "react";
 
-const AdminPageOptions = props => {
+const AdminPageScheduleTimes = props => {
   const scheduleTimings = [
     "09.00 - 10.00",
     "10.00 - 11.00",
@@ -30,4 +30,4 @@ const AdminPageOptions = props => {
   );
 };
 
-export default AdminPageOptions;
+export default AdminPageScheduleTimes;

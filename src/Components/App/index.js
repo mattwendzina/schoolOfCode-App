@@ -5,7 +5,7 @@ import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import Calendar from "react-calendar";
 import moment from "moment";
-import AdminPage from "../AdminPage";
+import AdminUploadSchedulePage from "../AdminUploadSchedulePage";
 import FeedbackTray from "../FeedbackTray";
 
 const allContent = [
@@ -153,14 +153,10 @@ function App() {
   const [selectedDate, setSelectedDate] = useState(todaysDate);
 
   const appendAdminUpload = (date, dataToAppend) => {
-    // DOES NOT overwrite an existing date, simply adds a new one
-    // don't allow duplicate dates overwrite with the new one
-    // means searching with "find" then getting index (.findIndex())
     const duplicateDate = fullScheduleData.findIndex(
       item => item.date === date
     );
-    // then slicing up to that one and then replacing it and
-    // slicing to the end
+
     duplicateDate < 0
       ? setFullScheduleData([
           ...fullScheduleData.slice(),
@@ -175,11 +171,6 @@ function App() {
 
   const convertDate = isoDate => {
     const convertedDate = moment(isoDate).format("DD/MM/YYYY");
-    console.log("this moment", moment().format("DD/MM/YYYY"));
-    console.log(selectedDate);
-    console.log("convertedDate", convertedDate);
-    console.log(typeof convertedDate);
-    console.log("isodate", isoDate);
     setSelectedDate(convertedDate);
   };
 
@@ -190,18 +181,9 @@ function App() {
 
   // buttons to toggle date
   const changeDate = num => {
-    console.log(selectedDate);
-    console.log("date", d.getDate());
-    console.log(num);
-
-    return setSelectedDate(
-      Number(selectedDate[0]) +
-        num +
-        "/" +
-        (d.getMonth() + 1) +
-        "/" +
-        d.getFullYear()
-    );
+    // returns a moment.js object
+    const newDate = moment(selectedDate, "DD/MM/YYYY").add(num, "days");
+    return setSelectedDate(moment(newDate._d).format("DD/MM/YYYY"));
   };
 
   const uiConfig = {
@@ -256,7 +238,7 @@ function App() {
           Schedule
           <button onClick={() => changeDate(-1)}>&lt;</button>
           <button onClick={() => changeDate(1)}>&gt;</button>
-          <AdminPage
+          <AdminUploadSchedulePage
             props={(date, dataToAppend) =>
               appendAdminUpload(date, dataToAppend)
             }
