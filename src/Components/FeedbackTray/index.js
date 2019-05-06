@@ -27,6 +27,7 @@ const FeedbackTray = () => {
   const [dummyFeedbackData, setDummyFeedbackData] = useState(data);
 
   const updateFeedback = (titleMatch, newRating, newComment) => {
+    console.log("fired!");
     const matchedIndex = dummyFeedbackData.findIndex(
       item => titleMatch === item.title
     );
@@ -40,13 +41,20 @@ const FeedbackTray = () => {
       },
       ...dummyFeedbackData.slice(matchedIndex + 1)
     ]);
+    if (carouselIndex > 0) {
+      setCarouselIndex(carouselIndex - 1);
+    }
   };
   return (
     <>
       {console.log("dummyData", dummyFeedbackData)}
       <button
         onClick={() => {
-          if (carouselIndex === dummyFeedbackData.length - 3) {
+          if (
+            carouselIndex ===
+              dummyFeedbackData.filter(i => i.complete === false).length - 3 ||
+            dummyFeedbackData.filter(i => i.complete === false).length <= 3
+          ) {
             return;
           }
           setCarouselIndex(carouselIndex + 1);

@@ -146,10 +146,9 @@ firebase.initializeApp({
   authDomain: "what-did-i-miss-88f32.firebaseapp.com"
 });
 function App() {
+  const todaysDate = moment().format("DD/MM/YYYY");
   const [fullScheduleData, setFullScheduleData] = useState(allContent);
   const [signedIn, setSignedIn] = useState(false);
-  const d = new Date();
-  const todaysDate = moment().format("DD/MM/YYYY");
   const [selectedDate, setSelectedDate] = useState(todaysDate);
 
   const appendAdminUpload = (date, dataToAppend) => {
