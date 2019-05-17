@@ -11,7 +11,7 @@ import LocationImage from "../../Images/location.svg";
 import EmailImage from "../../Images/close-envelope.svg";
 import MoonImage from "../../Images/SOCMoon.png";
 import AstronautImage from "../../Images/SOCAstronaut.webp";
-import PlanetImage from "../../Images/SOCPlanet.png";
+import PlanetImage from "../../Images/SOCPlanetcrop.png";
 class ApplicationLandingPage extends Component {
   render() {
     return (
@@ -135,14 +135,18 @@ class ApplicationLandingPage extends Component {
             <div className={css.sentenceTwo}>
               <h4> course open to everyone</h4>
             </div>
-            {/* <img src={PlanetImage} className={css.planetImage} alt="planet" /> */}
+            <div className={css.launchIntoTech}>
+              <h4>Launch</h4>
+              <h4>Into</h4>
+              <h4>Tech</h4>
+            </div>
             <img src={MoonImage} className={css.moonImage} alt="moon" />
             <img
               src={AstronautImage}
               className={css.astronautImage}
               alt="astronaut"
             />
-            {/* <img src={PlanetImage} className={css.planetImage} alt="planet" /> */}
+            <img src={PlanetImage} className={css.planetImage} alt="planet" />
           </div>
         </div>
       </div>

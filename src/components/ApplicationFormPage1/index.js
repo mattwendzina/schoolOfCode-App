@@ -65,38 +65,29 @@ const FormPart1 = ({
             required
           />
 
-          <div>
-            <label>Last Name</label>
-            <input
-              placeholder="Enter Last name.."
-              className={css.lastName}
-              type="text"
-              name="lastName"
-              onChange={updateField}
-              defaultValue={formValues.lastName}
-              required
-            />
-          </div>
-          <div>
-            <label>Email</label>
-            <input
-              placeholder="Enter email.."
-              className={css.email}
-              type="email"
-              name="email"
-              onChange={updateField}
-              defaultValue={formValues.email}
-              required
-            />
-          </div>
-          <div style={{ color: "red", fontSize: 12 }}>
-            {" "}
-            {formError.inputError}
-          </div>
-          <div style={{ color: "red", fontSize: 12 }}>
-            {" "}
-            {formError.emailError}
-          </div>
+          <label>Last Name</label>
+          <input
+            placeholder="Enter Last name.."
+            className={css.lastName}
+            type="text"
+            name="lastName"
+            onChange={updateField}
+            defaultValue={formValues.lastName}
+            required
+          />
+
+          <label>Email</label>
+          <input
+            placeholder="Enter email.."
+            className={css.email}
+            type="email"
+            name="email"
+            onChange={updateField}
+            defaultValue={formValues.email}
+            required
+          />
+          <div>{formError.inputError}</div>
+          <div>{formError.emailError}</div>
 
           <button onClick={saveAndContinue} className={css.saveAndContinue}>
             {" "}

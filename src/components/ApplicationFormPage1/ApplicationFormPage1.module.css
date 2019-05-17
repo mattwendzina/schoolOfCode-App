@@ -28,6 +28,7 @@
   border-radius: 10px;
   font-weight: bold;
   background-color: #11cf84;
+  width: 100%;
 }
 /* @media only screen and (max-width: 550px) {
   .formContainer {

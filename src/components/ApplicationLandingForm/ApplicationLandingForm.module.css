@@ -56,8 +56,7 @@ h2 {
 .emailContainer {
   display: inline-flex;
 
-  background-color: rgba(34, 34, 34, 0.452);
-  border-radius: 25%;
+  border-radius: 5px;
 }
 .twitterLogo,
 .facebookLogo,
@@ -181,12 +180,6 @@ h2 {
 
 /* MOBILE VIEW MEDIA QUERY */
 @media only screen and (max-width: 550px) {
-  .socImage {
-    display: none;
-  }
-  .leftContainer {
-    width: 100%;
-  }
   .socialMediaContainer {
     display: none;
   }
@@ -206,10 +199,16 @@ h2 {
     grid-template-columns: auto;
     grid-template-rows: auto auto;
     grid-template-areas: "header" "form";
-    margin: 2% auto;
-    height: 100%;
-    border: 3px solid white;
-    border-radius: 10px;
-    width: 70%;
+    margin: 10% auto;
+    border: #e0e0e0 solid 5px;
+    border-radius: 5px;
+    height: 85%;
+  }
+  .leftContainer {
+    border-radius: 0px;
+    border: 0px;
+  }
+  .rightContainer {
+    border: 0px;
   }
 }
