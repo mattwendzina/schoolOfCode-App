@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import css from "../ApplicantDashboard/ApplicantDashboard.module.css";
 import socPlanet from "../../Images/planet_soc.png";
+import Rocket from "../../Images/spaceship.png";
 import { api } from "../../config";
 import firebase from "firebase";
 
@@ -125,7 +126,11 @@ const ApplicantDashBoard = props => {
           (info.stage === 2 && passSecondStage === true) ||
           (info.stage === 3 && passFinalStage === true) ? (
             <div className={css.stepPassed}>
-              <p>Congratulations! You passed Stage {info.stage}!</p>
+              <div className={css.congratsMessage}>Congratulations</div>
+              <div className={css.congratsMessage}>
+                {" "}
+                You passed Stage {info.stage}!
+              </div>
             </div>
           ) : null}
           {/* <button onClick={() => changeStage(info)}> Pass </button> */}
@@ -139,8 +144,9 @@ const ApplicantDashBoard = props => {
             {" "}
             Stage {info.stage}{" "}
           </div>
+
           <div className={css.progressImgContainer}>
-            <img src={socPlanet} alt="socPlanet icon" />
+            <img src={Rocket} alt="rocket icon" />
           </div>
           <div onClick={() => redirectTo(info.stage)} className={css.stepCard}>
             <h3> {info.title}</h3>
