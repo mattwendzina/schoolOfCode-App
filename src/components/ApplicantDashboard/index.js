@@ -12,20 +12,20 @@ const ApplicantDashBoard = props => {
   const [users, setUsers] = useState({});
   const [stepInfo, setStepInfo] = useState([
     {
-      title: "Complete Form",
-      desc: "Click here to complete the form",
+      title: "Application Form",
+      desc: "Click here to complete your form",
       stage: 1,
       className: css.stepOne
     },
     {
-      title: "Complete Videos",
-      desc: "Click here to complete the videos",
+      title: "Video Interview",
+      desc: "Click here to complete your videos",
       stage: 2,
       className: css.stepTwo
     },
     {
       title: "Interview Day",
-      desc: "Click here to accept place for interview",
+      desc: "Click here to accept your place for interview",
       stage: 3,
       className: css.stepThree
     }
@@ -126,19 +126,22 @@ const ApplicantDashBoard = props => {
               >
                 Stage {info.stage}
               </div>
+
               <img
+                className={css.lockImage}
                 src="/lock_white.png"
                 alt="padlocked stage"
                 style={{ width: "40%" }}
               />
             </div>
-            <div
+            <div className={css.lockedText}>Locked</div>
+            {/* <div
               onClick={() => redirectTo(info.stage)}
               className={css.stepCard}
             >
               <h3> {info.title}</h3>
-              <p> {info.desc} </p>
-            </div>
+              <p className={css.lockedText}> Locked </p>
+            </div> */}
           </div>
         );
       } else if (
@@ -159,16 +162,21 @@ const ApplicantDashBoard = props => {
             </div>
             <div className={css.stepPassed}>
               <div className={css.astronautFlag}>
-                <img src="/astronaut.png" />
+                <img
+                  src="/astronaut.png"
+                  alt="congrtatulations you've passed this stage!"
+                />
               </div>
             </div>
-            <div
+            <div className={css.congratsText}>Congratulations!</div>
+            {/* <div
               onClick={() => redirectTo(info.stage)}
               className={css.stepCard}
             >
-              <h3> {info.title}</h3>
-              <p> {info.desc} </p>
-            </div>
+              <h3>Complete</h3>
+
+             
+            </div> */}
           </div>
         );
       } else {
@@ -185,7 +193,11 @@ const ApplicantDashBoard = props => {
             </div>
 
             <div className={css.progressImgContainer}>
-              <img className={css.earthGlobe} src="/earth-globe.png" />
+              <img
+                className={css.earthGlobe}
+                src="/earth-globe.png"
+                alt="earth image"
+              />
               <img
                 className={css.rocketImage}
                 src={rocket}
@@ -199,13 +211,13 @@ const ApplicantDashBoard = props => {
                   animation: `${css[`rocketFlight${info.progression}`]} 2s`
                 }}
               />
-            </div>
-            <div
-              onClick={() => redirectTo(info.stage)}
-              className={css.stepCard}
-            >
-              <h3> {info.title}</h3>
-              <p> {info.desc} </p>
+              <div
+                onClick={() => redirectTo(info.stage)}
+                className={css.stepCard}
+              >
+                <h3> {info.title}</h3>
+                <p> {info.desc} </p>
+              </div>
             </div>
           </div>
         );
