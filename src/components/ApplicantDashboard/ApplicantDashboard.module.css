@@ -221,11 +221,17 @@ p {
   margin: 5px;
   background: white;
   border-radius: 5px;
-  box-shadow: 1px 1px 5px;
   position: relative;
   height: 100px;
-  /* width: 80%; */
+  color: white;
+  box-shadow: 0 0 5px;
+  transition: 300ms ease-in-out;
 }
+
+.stepCard:hover {
+  box-shadow: 0 0 10px;
+}
+
 .cardContainer .stepCard {
   background-image: linear-gradient(
     to bottom right,
@@ -244,6 +250,7 @@ p {
   display: flex;
   align-items: center;
   padding: 15px 5px;
+  color: black;
 }
 
 .stepsContainer p {
@@ -253,6 +260,7 @@ p {
   justify-content: center;
   padding: 35px 5px;
   text-align: center;
+  color: black;
 }
 
 .acceptanceContainer {
@@ -279,8 +287,9 @@ p {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  width: 200px;
-  height: 200px;
+  width: 40%;
+  height: 40%;
+  object-fit: contain;
   bottom: 10%;
 }
 .lockImage {

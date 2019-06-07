@@ -1,39 +1,35 @@
 .container {
-  display: grid;
-  grid-template-columns: 35% 65%;
-  grid-template-areas: "header form";
-
-  height: 100vh;
+  display: flex;
+  min-height: 100vh;
+  overflow: hidden;
 }
 .leftContainer {
-  grid-area: header;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
   color: white;
   background-image: linear-gradient(
     to bottom right,
     rgba(48, 143, 214, 0.57),
     rgba(108, 122, 137, 0.33)
   );
-  /* background-color: rgba(49, 165, 220, 0.1); */
 }
-
 .rightContainer {
+  flex: 2;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  grid-area: form;
   color: white;
   position: relative;
-  margin: 0 5%;
-  background-image: url(../../Images/starsBackground.png);
-  /* background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/N13e7awhgiljgescq/videoblocks-black-empty-space-with-stars-dark-science-background-with-movement_rrrhaewqg_thumbnail-full01.png"); */
   font-weight: bold;
 }
 .formContainer {
-  position: relative;
-  top: 17%;
   width: 50%;
   color: white;
 }
+
 /* LEFT CONTAINER CONTENT */
 /* SOC IMAGE */
 .socImage {
@@ -44,19 +40,15 @@
   border-radius: 200px;
 }
 .socImageContainer {
-  top: 15%;
-  position: relative;
   text-align: center;
+  padding: 20px 0;
 }
 .instructionsContainer {
-  position: relative;
-  top: 22%;
   font-size: 1.3em;
   margin: 0;
   /* margin-top: 20px; */
   /* margin-left: 20px; */
-  padding: 0;
-  margin: 0px 10%;
+  padding: 20px;
 }
 .instructionsContainer li {
   margin-bottom: 30px;
@@ -69,7 +61,7 @@
   font-weight: bold;
   font-size: 1.8em;
   position: relative;
-  margin: 0px 10%;
+  top: 20%;
   display: flex;
   justify-content: center;
 }
@@ -104,24 +96,23 @@
   justify-content: center;
   display: flex;
   flex-direction: row;
-  position: absolute;
   width: 100%;
-  bottom: 15%;
+  padding: 20px;
 }
-.identifyContainer,
+
 .situationContainer {
-  margin-top: 5%;
+  margin-top: 30px;
+  margin-bottom: 50px;
 }
+
 .applicationFormText {
-  position: relative;
-  top: 10%;
   text-align: center;
   font-size: 2.2em;
+  padding: 20px 0;
 }
 .applicationStepText {
-  position: absolute;
-  margin-top: 80px;
   font-size: 2.2em;
+  padding: 30px 0;
 }
 .saveAndContinueButton,
 .previousButton {

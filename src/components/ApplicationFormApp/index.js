@@ -20,7 +20,7 @@ const App = () => {
     });
   }, []);
 
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(3);
 
   const [formValues, setFormValues] = useState({
     firstName: "",

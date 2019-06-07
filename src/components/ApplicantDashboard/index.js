@@ -12,13 +12,13 @@ const ApplicantDashBoard = props => {
   const [users, setUsers] = useState({});
   const [stepInfo, setStepInfo] = useState([
     {
-      title: "Complete Form",
+      title: "Application Form",
       desc: "Click here to complete the form",
       stage: 1,
       className: css.stepOne
     },
     {
-      title: "Complete Videos",
+      title: "Video Interviews",
       desc: "Click here to complete the videos",
       stage: 2,
       className: css.stepTwo
@@ -195,8 +195,9 @@ const ApplicantDashBoard = props => {
                 src={rocket}
                 alt="rocket icon"
                 style={{
-                  width: "100px",
-                  height: "100px",
+                  width: "25%",
+                  height: "25%",
+                  objectFit: "contain",
                   position: "absolute",
                   left: `${info.progression}%`,
                   bottom: `${info.progression}%`,
