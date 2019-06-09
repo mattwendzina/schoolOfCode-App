@@ -3,13 +3,12 @@ Application Status buttons
 -----------------------------*/
 
 .traysContainer {
-      display: flex;
-    justify-content: center;
-    padding: 10px;
-    margin: 60px auto 0 auto;
-    position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  margin: 60px auto 0 auto;
+  position: relative;
 }
-
 
 button {
   font-size: 14px;
@@ -24,8 +23,8 @@ button {
 }
 
 .applicationStatusButtonActive {
-   background: #31a4db;
-   color:white;
+  background: #31a4db;
+  color: white;
   margin: 0 25px;
   padding: 10px;
   width: 250px;
@@ -110,6 +109,14 @@ button.applicant:hover {
   cursor: pointer;
 }
 
+.listMainContainer {
+  height: 65vh;
+}
+
+.hideListMainContainer {
+  height: auto;
+}
+
 ul.applicantListContainer {
   position: absolute;
   left: 18%;
@@ -185,8 +192,8 @@ ul.hideApplicantListContainer {
 }
 
 .reasonContainer p {
-  height:280px;
-  padding:10px;
+  height: 280px;
+  padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -286,7 +293,7 @@ ul.hideApplicantListContainer {
 .metaData img {
   width: 35px;
   height: 100%;
-      margin: 0 10px 0 0;
+  margin: 0 10px 0 0;
 }
 
 .metaData p {
@@ -309,7 +316,7 @@ ul.hideApplicantListContainer {
   box-shadow: 1px 1px 5px;
   margin: 10px;
   border-radius: 5px;
-  height:410px;
+  height: 410px;
 }
 
 .videoRatingsContainer h2 {

@@ -191,20 +191,11 @@ p {
 }
 
 .stepPassed {
-  position: absolute;
-  /* background-color: rgba(13, 135, 192, 0.185); */
-
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  /* color: #7219ff; */
+  height: 80%;
+  width: 80%;
+  margin: 10px;
+  margin: 0 auto;
   color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 30px;
   z-index: 1;
 }
 
@@ -278,9 +269,19 @@ p {
   font-weight: bold;
   font-size: 35px;
 }
+
+.astronautFlag {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  justify-content: center;
+}
+
 .astronautFlag img {
-  position: relative;
-  opacity: 0.9;
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
 }
 
 .earthGlobe {

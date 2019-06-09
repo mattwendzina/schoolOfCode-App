@@ -11,33 +11,37 @@
 -------------------------------*/
 
 .passThresholdContainer {
-  text-align:center;
-  padding-top:10px;
+  text-align: center;
+  padding-top: 10px;
 }
 
 .passThresholdContainer p {
-  font-size:20px;
-  color:white;
-  font-weight:bold;
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
 }
 
 /*----------------------------
   Application Status Section
 ------------------------------*/
 
+.videoTray {
+  background-image: url(/starsBackground.png);
+}
+
 .instructionsMessage {
   background: rgba(59, 59, 59, 0.5);
-  position: absolute;
-  left: 19%;
-  right: 19%;
-  height: 60vh;
+  height: 45vh;
+  width: 60%;
+  margin: 0 auto;
+  padding: 100px 20px;
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size:25px;
+  font-size: 25px;
   transition: 300ms ease-in-out;
-  font-weight:normal;
+  font-weight: normal;
 }
 
 .applicationStatusContainer {
@@ -52,19 +56,22 @@ ul.applicantListContainer {
   display: flex;
   flex-direction: column;
   padding: 0;
-  background: rgba(1, 1, 1, 0.46);
+  background: rgba(59, 59, 59, 0.5);
+  height: 50vh;
   position: absolute;
   left: 19%;
   right: 19%;
   z-index: 1;
   opacity: 1;
   transition: 300ms ease-in-out;
+  overflow: scroll;
 }
 
 ul.hideApplicantListContainer {
   overflow: scroll;
   display: flex;
   flex-direction: column;
+  height: 45vh;
   padding: 0;
   background: rgba(1, 1, 1, 0.46);
   position: absolute;
@@ -110,7 +117,7 @@ button {
 
 .applicationStatusButtonActive {
   background: #31a4db;
-  color:white;
+  color: white;
   margin: 0 25px;
   padding: 10px;
   width: 250px;
@@ -194,7 +201,7 @@ button.applicant:hover {
   flex-wrap: wrap;
   background: white;
   box-shadow: 1px 1px 5px;
-  margin: 10px;
+  margin: 10px 10px 0 10px;
   border-radius: 5px;
 }
 
@@ -384,11 +391,11 @@ div.overallRating {
 
 .thankyouContainer img {
   position: absolute;
-    top: 0;
-    right: 0;
-    margin: 10px;
-    width: 20px;
-    transition: 200ms ease-in-out;
+  top: 0;
+  right: 0;
+  margin: 10px;
+  width: 20px;
+  transition: 200ms ease-in-out;
 }
 
 .thankyouContainer img:hover {
