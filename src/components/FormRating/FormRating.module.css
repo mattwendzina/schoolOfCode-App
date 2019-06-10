@@ -8,6 +8,8 @@ Application Status buttons
   padding: 10px;
   margin: 60px auto 0 auto;
   position: relative;
+
+  left: 3.25%;
 }
 
 button {
@@ -23,8 +25,15 @@ button {
 }
 
 .applicationStatusButtonActive {
-  background: #31a4db;
-  color: white;
+
+  background: rgba(59, 59, 59, 0.2);
+  background-image: linear-gradient(
+    to bottom right,
+    rgba(48, 143, 214, 0.57),
+    rgba(108, 122, 137, 0.33)
+  );
+  cursor: pointer;
+
   margin: 0 25px;
   padding: 10px;
   width: 250px;
@@ -34,7 +43,12 @@ button {
   align-items: center;
   justify-content: space-between;
   z-index: 1;
-  transition: 100ms;
+  transition: 200ms;
+
+  color: white;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 8px;
 }
 
 .applicationStatusButtonActive:hover {
@@ -49,6 +63,8 @@ button {
   font-size: 18px;
 }
 .applicationStatusButton {
+  cursor: pointer;
+  background: rgba(59, 59, 59, 0.7);
   margin: 0 25px;
   padding: 10px;
   width: 250px;
@@ -59,11 +75,11 @@ button {
   justify-content: space-between;
   z-index: 1;
   transition: 200ms;
-}
 
-.applicationStatusButton:hover {
-  cursor: pointer;
-  box-shadow: 2px 2px 3px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 8px;
 }
 
 .applicationStatusButton p {
@@ -75,8 +91,8 @@ button {
 }
 
 .applicationsNumber {
-  border-radius: 0px 4px 4px 0px;
-  background: lightcoral;
+  border-radius: 0 5px 5px 0;
+  background: #11cf84;
   display: flex;
   align-items: center;
 }
@@ -86,12 +102,23 @@ Applicant Lists
 -------------------*/
 
 .instructionsMessage {
+  background: rgba(59, 59, 59, 0.5);
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+
+  height: 60vh;
+  width: 97%;
   color: white;
-  font-size: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  transition: 300ms ease-in-out;
+  font-weight: normal;
+
+  /* top: 50%;
+  left: 50%; */
+  /* transform: translate(-50%, -50%); */
+  /* font-size: 35px; */
 }
 
 button.applicant {
@@ -119,11 +146,12 @@ button.applicant:hover {
 
 ul.applicantListContainer {
   position: absolute;
-  left: 18%;
-  right: 18%;
+  left: 0%;
   margin: 10px;
-  height: 65vh;
-  overflow: scroll;
+  height: 60vh;
+  width: 100%;
+  margin-top: 15px;
+  /* overflow: scroll; */
   display: flex;
   flex-direction: column;
 
@@ -163,7 +191,7 @@ ul.hideApplicantListContainer {
   display: flex;
   flex-direction: column;
   width: 50%;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   padding: 10px;
 }
 
@@ -189,15 +217,25 @@ ul.hideApplicantListContainer {
 
 .reasonContainer {
   border-radius: 5px;
+  flex-direction: column;
+  /* justify-content: center;                                                                                                                                                          */
+}
+.reasonContainer h3 {
+  /* align-self: flex-start; */
+  font-size: 36px;
+  margin: 20px;
+  position: relative;
+  /* top: -25%; */
 }
 
 .reasonContainer p {
-  height: 280px;
+
+  font-size: 28px;
   padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: scroll;
+  /* overflow: scroll; */
 }
 
 .applicationButtonsContainer {
@@ -205,44 +243,48 @@ ul.hideApplicantListContainer {
   justify-content: center;
   flex: 100%;
   padding: 10px;
-  background: #30a4db;
+  background: none;
   border-radius: 0 0 5px 5px;
 }
 
 .applicationButtonsContainer button {
-  margin: 0 15px;
+  margin: 0 30px;
   width: 150px;
   padding: 10px;
-  border-radius: 5px;
-  box-shadow: 1px 1px 2px;
+  border-style: none;
+  border-radius: 10px;
+  box-shadow: 0 0 8px;
   transition: 200ms;
   position: relative;
   z-index: 1;
+  background: rgba(59, 59, 59, 0.15);
+  opacity: 0.97;
+  color: white;
 }
 
 .applicationButtonsContainer button:hover {
   cursor: pointer;
   box-shadow: 2px 2px 5px;
 }
-
 .adminDashboardHome {
-  position: absolute;
-  top: 2%;
-  right: 2%;
+  top: 60px;
+  right: 30px;
+  position: relative;
 }
-
 .adminDashboardHome button {
   margin: 0 15px;
   width: 100px;
+  height: 60px;
   padding: 10px;
   border-radius: 5px;
-  box-shadow: 1px 1px 2px;
+  background: rgba(59, 59, 59, 0.7);
   transition: 200ms;
+  box-shadow: 0 0 8px;
+  color: white;
 }
 
 .adminDashboardHome button:hover {
   cursor: pointer;
-  box-shadow: 2px 2px 5px;
 }
 
 /*--------------------
@@ -252,6 +294,8 @@ ul.hideApplicantListContainer {
 .reasonContainer,
 .detailsContainer {
   flex-basis: calc(50%);
+
+  justify-content: center;
 }
 
 .detailsContainer {
@@ -261,19 +305,19 @@ ul.hideApplicantListContainer {
 .detailsContainer h3 {
   margin: 20px;
   font-size: 20px;
-  padding: 10px;
+
   position: relative;
 }
 
 .detailsContainer h3:before {
-  content: "";
+  /* content: "";
   position: absolute;
   bottom: 20%;
   top: 20%;
   left: 10%;
-  right: 10%;
-  border-right: solid 2px;
-  border-left: solid 2px;
+  right: 10%; */
+  /* border-right: solid 2px;
+  border-left: solid 2px; */
 }
 
 .metaData {
@@ -297,9 +341,9 @@ ul.hideApplicantListContainer {
 }
 
 .metaData p {
-  font-size: 20px;
-  text-align: center;
-  margin: 0 auto;
+  font-size: 26px;
+  text-align: left;
+  /* margin: 0 auto; */
 }
 
 .detailsSubContainer h2 {
@@ -312,8 +356,8 @@ ul.hideApplicantListContainer {
 .videoRatingsContainer {
   display: flex;
   flex-wrap: wrap;
-  background: white;
   box-shadow: 1px 1px 5px;
+  color: white;
   margin: 10px;
   border-radius: 5px;
   height: 410px;

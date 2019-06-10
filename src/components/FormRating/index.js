@@ -177,6 +177,8 @@ function FormRating(props) {
               }
               onClick={() => {
                 dispatch(false);
+
+                setShowSpecificApplications([]);
               }}
             >
               <p> Rejected Applications </p>
@@ -257,6 +259,7 @@ function FormRating(props) {
                 })}
               </ul>
             </div>
+
           </div>
 
           <div>
@@ -266,7 +269,11 @@ function FormRating(props) {
                   ? css.applicationStatusButtonActive
                   : css.applicationStatusButton
               }
-              onClick={() => dispatch("pending")}
+
+              onClick={() => {
+                dispatch("pending");
+                setShowSpecificApplications([]);
+              }}
             >
               <p> Pending Applications</p>
               <p className={css.applicationsNumber}>
@@ -341,7 +348,11 @@ function FormRating(props) {
                   ? css.applicationStatusButtonActive
                   : css.applicationStatusButton
               }
-              onClick={() => dispatch(true)}
+
+              onClick={() => {
+                dispatch(true);
+                setShowSpecificApplications([]);
+              }}
             >
               <p> Accepted Applications </p>
               <p className={css.applicationsNumber}>
@@ -405,11 +416,12 @@ function FormRating(props) {
               })}
             </ul>
           </div>
+
+        </div>
+        <div className={css.adminDashboardHome}>
+          <button onClick={goToHome}> Admin Home</button>
         </div>
 
-        <div onClick={goToHome} className={css.adminDashboardHome}>
-          <button> Admin Home</button>
-        </div>
         <div className={css.applicantDetailsContainer}>
           {transitions.map(({ item, key, props }) => {
             const matchedUser =
@@ -423,29 +435,30 @@ function FormRating(props) {
                 <animated.div key={key} style={props}>
                   <div className={css.videoRatingsContainer}>
                     <div className={css.detailsContainer}>
-                      <h2>Applicant Details </h2>
-                      <h3>
-                        {matchedUser.firstName || "noFirstName"}{" "}
-                        {matchedUser.lastName || "noLastName"}
-                      </h3>
                       <div className={css.metaData}>
+                        <h3 style={{ fontSize: "36px" }}>
+                          {matchedUser.firstName || "noFirstName"}{" "}
+                          {matchedUser.lastName || "noLastName"}
+                        </h3>
                         <div>
-                          <img src={age} />
-                          <p>{matchedUser.age || "noAge"}</p>
+                          <img src="/astronaut_head.png" />
+                          <p>Age: {matchedUser.age || "noAge"}</p>
                         </div>
                         <div>
-                          <img src={location} />
-                          <p> {matchedUser.location || "noLocation"}</p>
+                          <img src="/flag.png" />
+                          <p>
+                            Location: {matchedUser.location || "noLocation"}
+                          </p>
                         </div>
                         <div>
-                          <img src={approved} />
+                          <img src="/satellite.png" />
                           <p>{matchedUser.background || "noBackground"}</p>
                         </div>
                       </div>
                     </div>
 
                     <div className={css.reasonContainer}>
-                      <h2>Reason for applying </h2>
+                      <h3>Reason for applying </h3>
                       <p>
                         {item.formApplicationData.motivationQuestion ||
                           "noMotivationQuestion"}
@@ -453,6 +466,19 @@ function FormRating(props) {
                     </div>
                     <div className={css.applicationButtonsContainer}>
                       <button
+                        style={{ backgroundColor: "#bf1717" }}
+                        onClick={() =>
+                          //changeStatus(item.firebaseUid, "rejected")
+                          setShowSpecificApplications([])
+                        } // this is not connected up correctly
+                        onMouseUp={() => {
+                          postForm(false, item.firebaseUid);
+                        }}
+                      >
+                        <span style={{ color: "white" }}>REJECT</span>
+                      </button>
+                      <button
+                        style={{ backgroundColor: "#11cf84" }}
                         onClick={() => {
                           //changeStatus(item.firebaseUid, "accepted");
                           setShowSpecificApplications([]);
@@ -468,29 +494,7 @@ function FormRating(props) {
                           postForm(true, item.firebaseUid);
                         }}
                       >
-                        ACCEPT
-                      </button>
-                      <button
-                        onClick={() =>
-                          //changeStatus(item.firebaseUid, "rejected")
-                          setShowSpecificApplications([])
-                        } // this is not connected up correctly
-                        onMouseUp={() => {
-                          postForm(false, item.firebaseUid);
-                        }}
-                      >
-                        DECLINE
-                      </button>
-                      <button
-                        onClick={() =>
-                          // changeStatus(
-                          //   item.firebaseUid,
-                          //   item.passFormStage
-                          // )
-                          setShowSpecificApplications([])
-                        }
-                      >
-                        CANCEL
+                        <span style={{ color: "white" }}>ACCEPT</span>
                       </button>
                     </div>
                   </div>

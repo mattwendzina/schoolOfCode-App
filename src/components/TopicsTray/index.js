@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { api } from "../../config";
 import Topics from "../Topics";
 import css from "./Topics.module.css";
+import { withStyles } from "@material-ui/core/styles";
 
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
@@ -10,10 +11,26 @@ import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 // fetch GET topic keys
 
-const TopicsTray = () => {
+const styles = {
+  root: {
+    backgroundColor: "#11cf84",
+    borderRadius: "5px",
+    margin: 5
+  },
+  broot: {
+    backgroundColor: `white`,
+    opacity: 0.9
+  },
+  p: { fontSize: 32 },
+  subPara: { fontSize: 24, color: "black" }
+};
+
+const TopicsTray = props => {
   const [topicKeys, setTopicKeys] = useState([]);
   const [showTopic, setShowTopic] = useState(false);
   const [searchField, setSearchField] = useState("");
+
+  const { classes } = props;
 
   useEffect(() => {
     async function fetchTopicData() {
@@ -24,37 +41,31 @@ const TopicsTray = () => {
     fetchTopicData();
   }, []);
 
-  const searchTopics = (array, searchInput) => {
-    return array.filter(topic => {
-      let regex = new RegExp(searchInput, "gi");
-      return topic.match(regex);
-    });
-  };
-
   return (
     <>
       <div>
-        <h2 className={css.topicsTitle}>Link Library</h2>
+        <h2 className={css.topicsTitle}>Resource Archive</h2>
         <input
           placeholder="search for a topic"
-          autofocus
           id={css.searchBar}
-          type="search"
           onChange={e => setSearchField(e.target.value)}
         />
         <div className={css.topicsContainer}>
           {searchField === ""
             ? topicKeys.sort().map(topic => (
-                <ExpansionPanel>
+                <ExpansionPanel classes={{ root: classes.broot }}>
                   <ExpansionPanelSummary
+                    classes={{ root: classes.root }}
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
                     onClick={() => setShowTopic(showTopic ? false : topic)}
                   >
-                    <Typography>{topic}</Typography>
+                    <Typography classes={{ root: classes.p }}>
+                      {topic}
+                    </Typography>
                   </ExpansionPanelSummary>
                   <ExpansionPanelDetails>
-                    <Typography>
+                    <Typography classes={{ root: classes.subPara }}>
                       {showTopic && <Topics topicKey={showTopic} />}
                     </Typography>
                   </ExpansionPanelDetails>
@@ -67,16 +78,19 @@ const TopicsTray = () => {
                   return topic.match(regex);
                 })
                 .map(topic => (
-                  <ExpansionPanel>
+                  <ExpansionPanel classes={{ root: classes.root }}>
                     <ExpansionPanelSummary
+                      classes={{ root: classes.root }}
                       expandIcon={<ExpandMoreIcon />}
                       aria-controls="panel1a-content"
                       onClick={() => setShowTopic(showTopic ? false : topic)}
                     >
-                      <Typography>{topic}</Typography>
+                      <Typography classes={{ root: classes.p }}>
+                        {topic}
+                      </Typography>
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails>
-                      <Typography>
+                      <Typography classes={{ root: classes.subPara }}>
                         {showTopic && <Topics topicKey={showTopic} />}
                       </Typography>
                     </ExpansionPanelDetails>
@@ -88,4 +102,4 @@ const TopicsTray = () => {
   );
 };
 
-export default TopicsTray;
+export default withStyles(styles)(TopicsTray);

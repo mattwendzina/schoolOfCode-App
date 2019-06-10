@@ -3,6 +3,7 @@
 ------------------*/
 .container {
   background-image: url("/starsBackground.png");
+  height: 100vh;
 }
 
 h1,
@@ -210,6 +211,7 @@ p {
 .stepCard {
   display: flex;
   margin: 5px;
+  height: 100px;
   background: white;
   border-radius: 5px;
   position: relative;
@@ -223,6 +225,32 @@ p {
   box-shadow: 0 0 10px;
 }
 
+=======
+  bottom: 5%;
+
+  /* width: 80%; */
+}
+
+.stepCard:hover {
+  cursor: pointer;
+}
+
+.stepsContainer h3 {
+  background: #bcf2ff;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 15px 5px;
+}
+
+.stepsContainer p {
+  flex: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 35px 5px;
+  text-align: center;
+}
 .cardContainer .stepCard {
   background-image: linear-gradient(
     to bottom right,
@@ -236,7 +264,6 @@ p {
 }
 
 .stepsContainer h3 {
-  background: #bcf2ff;
   flex: 1;
   display: flex;
   align-items: center;
@@ -245,6 +272,7 @@ p {
 }
 
 .stepsContainer p {
+  font-size: 1.4em;
   flex: 3;
   display: flex;
   align-items: center;
@@ -252,6 +280,7 @@ p {
   padding: 35px 5px;
   text-align: center;
   color: black;
+  font-weight: bold;
 }
 
 .acceptanceContainer {
@@ -296,14 +325,17 @@ p {
 .lockImage {
   top: 10%;
 }
-.stepCard .confetti {
-  width: 100px;
-  height: 100%;
-}
-.congratsText {
-  font-size: 1.4em;
+
+.congratsText,
+.lockedText {
+  font-size: 1.8em;
   font-weight: bold;
+  color: white;
+  position: relative;
+  text-align: center;
+  bottom: 10%;
 }
+
 @keyframes rocketFlight25 {
   from {
     bottom: 0%;
@@ -331,8 +363,8 @@ p {
     left: 0%;
   }
   to {
-    bottom: 75%;
-    left: 75%;
+    bottom: 60%;
+    left: 60%;
   }
 }
 

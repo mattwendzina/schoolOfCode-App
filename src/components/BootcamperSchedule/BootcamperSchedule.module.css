@@ -48,20 +48,25 @@
   position: relative;
   justify-content: space-around;
   align-items: center;
+  height: 80%;
 
   padding: 35px 10px;
 }
 
 .itemContainer {
   position: relative;
-
-  bottom: 15%;
+  height: 80%;
+  width: 20%;
+  font-size: 22px;
+  text-align: center;
+  bottom: -8%;
   padding: 25px;
   background-color: whitesmoke;
   border-radius: 5px;
   box-shadow: 1px 1px 5px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 
   align-items: center;
   transition: 200ms ease-in-out;
@@ -101,7 +106,7 @@
 .lessonInfoContainer {
   display: flex;
   justify-content: center;
-  height: 100%;
+  height: 80%;
   position: relative;
   top: 20%;
 }
@@ -109,11 +114,11 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  box-shadow: 1px 1px 5px;
-  background-color: whitesmoke;
-  width: 50%;
-  height: 80%;
   border-radius: 5px;
+  box-shadow: 0px 0px 20px whitesmoke;
+  background-color: whitesmoke;
+  width: 45%;
+  height: 90%;
 }
 .lessonTitle {
   display: flex;
@@ -123,14 +128,18 @@
   width: 100%;
   height: 20%;
   font-weight: bold;
-
-  font-size: 1.4em;
+  margin-top: 5px;
+  padding-top: 10px;
+  font-size: 30px;
 }
 
 .lessonDetails {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   height: 100%;
   width: 100%;
+  color: black;
+  font-size: 20px;
 }
