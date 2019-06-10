@@ -223,7 +223,7 @@ const VideoRating = props => {
     if (collateFeedback.length > 3) {
       setOverallRating(calculateOverallRating());
 
-      if (collateFeedback.length === 5) {
+      if (collateFeedback.length === 10) {
         postRatingsToServer();
       }
     }
@@ -630,7 +630,9 @@ const VideoRating = props => {
                     } else if (collateFeedback.length === 5) {
                       return videoIndex === 4
                         ? transitions.map(({ item, key, props }, idx) => {
-                            return applicantIndex === idx ? (
+                            console.log("ITEM", item.result.firebaseUid);
+                            console.log("FIREBASEID", firebaseUid);
+                            return firebaseUid === item.result.firebaseUid ? (
                               <div className={css.thankyouContainer}>
                                 <h3> Thank you </h3>
                                 <p>
