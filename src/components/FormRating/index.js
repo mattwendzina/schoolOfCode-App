@@ -161,7 +161,7 @@ function FormRating(props) {
     setSearchedApplications(findMatches(input, applicants, applicationStatus));
   }, [input]);
 
-  console.log("APPLICATIONSTATUS", applicationStatus);
+  console.log("SHOW SPECIFIC APPLICATIONS", showSpecificApplications);
   return (
     <>
       <DashboardBanner title={"Form Applications"} />
@@ -177,6 +177,7 @@ function FormRating(props) {
               }
               onClick={() => {
                 dispatch(false);
+
                 setShowSpecificApplications([]);
               }}
             >
@@ -189,63 +190,76 @@ function FormRating(props) {
                 }
               </p>
             </button>
-            <ul className={css.applicantListContainer}>
-              {applicationStatus === null &&
-              showSpecificApplications.length === 0 ? (
-                <h3 className={css.instructionsMessage}>
-                  Select <br /> "Pending Applications" <br /> to begin rating{" "}
-                </h3>
-              ) : null}
-              <input
-                onChange={e => handleInput(e)}
-                className={
-                  applicationStatus === false
-                    ? css.showSearchInput
-                    : css.hideSearchInput
-                }
-                placeholder="Search Applicants"
-              />
-              {/* List all applicants, unless the search input is used  */}
-              {rejectedApplicants.map(applicant => {
-                if (
-                  showSpecificApplications.length === 0 &&
-                  applicationStatus === false
-                ) {
-                  return (
-                    <>
-                      {/* showSpecificApplications.length === 0 &&
+            <div
+              className={
+                showSpecificApplications.length === 0
+                  ? css.listMainContainer
+                  : css.hideListMainContainer
+              }
+            >
+              <ul className={css.applicantListContainer}>
+                {applicationStatus === null &&
+                showSpecificApplications.length === 0 ? (
+                  <h3 className={css.instructionsMessage}>
+                    Select <br /> "Pending Applications" <br /> to begin rating{" "}
+                  </h3>
+                ) : null}
+                <input
+                  onChange={e => handleInput(e)}
+                  className={
+                    applicationStatus === false
+                      ? css.showSearchInput
+                      : css.hideSearchInput
+                  }
+                  placeholder="Search Applicants"
+                />
+                {/* List all applicants, unless the search input is used  */}
+                {rejectedApplicants.map(applicant => {
+                  if (
+                    showSpecificApplications.length === 0 &&
+                    applicationStatus === false
+                  ) {
+                    return (
+                      <>
+                        {/* showSpecificApplications.length === 0 &&
                 applicationStatus === false &&
                 applicant.passFormStage === applicationStatus &&
                 input === "" && ( */}
-                      <UserName
-                        classToBe={css.applicant}
-                        click={e => viewApplications(e, applicant.firebaseUid)}
-                        key={e => viewApplications(e, applicant.firebaseUid)}
-                        uid={applicant.firebaseUid}
-                        dispatch={() => dispatch(false)}
-                      />
-                    </>
+                        <UserName
+                          classToBe={css.applicant}
+                          click={e =>
+                            viewApplications(e, applicant.firebaseUid)
+                          }
+                          key={e => viewApplications(e, applicant.firebaseUid)}
+                          uid={applicant.firebaseUid}
+                          dispatch={() => dispatch(false)}
+                        />
+                      </>
+                    );
+                  }
+                })}
+                {/* Lists all applicants when search input is used */}
+                {searchedApplications.map(applicant => {
+                  return (
+                    input !== "" &&
+                    applicant.passFormStage === false && (
+                      <>
+                        <UserName
+                          classToBe={css.applicant}
+                          click={e =>
+                            viewApplications(e, applicant.firebaseUid)
+                          }
+                          key={e => viewApplications(e, applicant.firebaseUid)}
+                          uid={applicant.firebaseUid}
+                          dispatch={() => dispatch(false)}
+                        />
+                      </>
+                    )
                   );
-                }
-              })}
-              {/* Lists all applicants when search input is used */}
-              {searchedApplications.map(applicant => {
-                return (
-                  input !== "" &&
-                  applicant.passFormStage === false && (
-                    <>
-                      <UserName
-                        classToBe={css.applicant}
-                        click={e => viewApplications(e, applicant.firebaseUid)}
-                        key={e => viewApplications(e, applicant.firebaseUid)}
-                        uid={applicant.firebaseUid}
-                        dispatch={() => dispatch(false)}
-                      />
-                    </>
-                  )
-                );
-              })}
-            </ul>
+                })}
+              </ul>
+            </div>
+
           </div>
 
           <div>
@@ -255,6 +269,7 @@ function FormRating(props) {
                   ? css.applicationStatusButtonActive
                   : css.applicationStatusButton
               }
+
               onClick={() => {
                 dispatch("pending");
                 setShowSpecificApplications([]);
@@ -333,6 +348,7 @@ function FormRating(props) {
                   ? css.applicationStatusButtonActive
                   : css.applicationStatusButton
               }
+
               onClick={() => {
                 dispatch(true);
                 setShowSpecificApplications([]);
@@ -400,6 +416,7 @@ function FormRating(props) {
               })}
             </ul>
           </div>
+
         </div>
         <div className={css.adminDashboardHome}>
           <button onClick={goToHome}> Admin Home</button>

@@ -3,16 +3,17 @@ body {
   font-family: "Oxygen", sans-serif;
 }
 .wrapper {
-  position: fixed;
-
+  position: relative;
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  overflow: hidden;
   background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/N13e7awhgiljgescq/videoblocks-black-empty-space-with-stars-dark-science-background-with-movement_rrrhaewqg_thumbnail-full01.png");
-  /* background-image: linear-gradient(to bottom right, #04c7d9, #5f04cf); */
 }
 .subHeader {
-  position: relative;
-  top: 35%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 1.6em;
   text-align: center;
 }
@@ -38,8 +39,11 @@ h3 {
   margin-bottom: 10%;
 }
 .loginContainer {
-  position: relative;
-  top: 40%;
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
 }
 .leftContainer {
   /* background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/N13e7awhgiljgescq/videoblocks-black-empty-space-with-stars-dark-science-background-with-movement_rrrhaewqg_thumbnail-full01.png"); */
@@ -68,11 +72,36 @@ h3 {
 .moonImage {
   background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/N13e7awhgiljgescq/videoblocks-black-empty-space-with-stars-dark-science-background-with-movement_rrrhaewqg_thumbnail-full01.png");
   position: absolute;
-
   top: 85%;
   width: 100%;
   height: 15%;
+  z-index: 0;
 }
+
+.astronautImage {
+}
+
+.astronautImage {
+  position: absolute;
+  bottom: 2%;
+  right: 81%;
+  height: 25%;
+  width: 25%;
+  object-fit: contain;
+  animation-name: float, astronautAnimation;
+  animation-duration: 4s, 4s;
+  animation-iteration-count: infinite, 1;
+}
+@keyframes astronautAnimation {
+  0% {
+    transform: translateX(-50%) scale(0);
+  }
+
+  100% {
+    transform: translateX(0) scale(1);
+  }
+}
+
 @keyframes float {
   0% {
     transform: translatey(0px);
@@ -85,27 +114,35 @@ h3 {
   }
 }
 
-.astronautImage {
-  animation: float 6s ease-in-out infinite;
-}
-.astronautImage {
-  position: absolute;
-  top: 60%;
-  height: 30%;
-}
 .planetImage {
-  top: 20%;
+  top: 50%;
+  transform: translateY(-50%);
   position: absolute;
-  left: 88%;
-
+  left: 70%;
   height: 60%;
+  width: 60%;
+  object-fit: contain;
+  z-index: 1;
+  animation-name: planetAnimation;
+  animation-duration: 4s;
+  animation-iteration-count: 1;
+}
+
+@keyframes planetAnimation {
+  0% {
+    transform: translateY(-50%) scale(0);
+  }
+
+  100% {
+    transform: translateY(-50%) scale(1);
+  }
 }
 
 .launchIntoTech {
   color: white;
-  display: inline-block;
   position: absolute;
-  top: 25%;
+  top: 50%;
+  transform: translateY(-50%);
   left: 5%;
   font-size: 4em;
 }
@@ -115,90 +152,28 @@ h3 {
 }
 
 .socImage {
-  top: 5%;
-  width: 200px;
-  height: 200px;
+  top: 15%;
+  height: 30%;
+  width: 30%;
+  object-fit: contain;
   transform: translate(-50%, 0);
   position: absolute;
   left: 50%;
 }
 
-/* @media only screen and (max-width: 550px) {
-  .socialMediaContainer {
-    display: none;
-  }
-  .contactContainer {
-    display: none;
-  }
-  .followUs {
-    display: none;
-  }
-  .contactUs {
-    display: none;
-  }
-  .planetImage {
-    display: none;
-  }
-  .launchIntoTech {
-    display: none;
-  }
-}
-@media only screen and (max-width: 800px) {
-  .socialMediaContainer {
-    display: none;
-  }
-  .contactContainer {
-    display: none;
-  }
-  .followUs {
-    display: none;
-  }
-  .contactUs {
-    display: none;
-  }
-  .planetImage {
-    display: none;
-  }
-}
-@media only screen and (max-width: 600px) {
-  .container {
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto auto;
-    grid-template-areas: "header" "form";
-    margin: 5% auto;
-    height: 100%;
-    border: 7px solid white;
-    border-radius: 7px;
-    width: 70%;
-    height: 90%;
-  }
-  .leftContainer {
-    border: 0px;
-    border-radius: 0px;
-
-    border-bottom: #e0e0e0 solid 7px;
-  }
-  .rightContainer {
-    border: 0px;
-  }
-  .planetImage {
-    display: none;
-  }
-  .launchIntoTech {
-    display: none;
-  }
+@media screen and (max-width: 990px) {
   .socImage {
-    width: 150px;
-    height: 150px;
+    top: 8%;
   }
-  .techHeading {
-    font-size: 1.3em;
+
+  .subHeader {
+    top: 42%;
+    width: 60%;
+  }
+  .launchIntoTech {
+    display: none;
+  }
+  .planetImage {
+    display: none;
   }
 }
-
-@media only screen and (max-width: 350px) {
-  .container {
-    height: 90%;
-  }
-} */

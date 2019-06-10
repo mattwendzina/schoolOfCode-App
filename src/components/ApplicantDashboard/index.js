@@ -13,11 +13,13 @@ const ApplicantDashBoard = props => {
   const [stepInfo, setStepInfo] = useState([
     {
       title: "Application Form",
+
       desc: "Complete your form",
       stage: 1,
       className: css.stepOne
     },
     {
+
       title: "Video Interview",
       desc: "Complete your videos",
       stage: 2,
@@ -169,8 +171,10 @@ const ApplicantDashBoard = props => {
                 src={"/rocket.svg"}
                 alt="rocket icon"
                 style={{
-                  width: "175px",
-                  height: "175px",
+                  width: "25%",
+                  height: "25%",
+                  objectFit: "contain",
+
                   position: "absolute",
                   left: `${
                     idx === 2 ? info.progression - 15 : info.progression

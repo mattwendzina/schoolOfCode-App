@@ -48,13 +48,16 @@ const VideoRating = props => {
     Object.keys(userInfo).map(item => userInfo[item].result._id),
     {
       from: {
-        transform: "scale(0)"
+        transform: "scale(0)",
+        padding: "10px"
       },
       enter: {
-        transform: "scale(1)"
+        transform: "scale(1)",
+        padding: "10px"
       },
       leave: {
-        transform: "scale(0)"
+        transform: "scale(0)",
+        padding: "10px"
       },
       config: { duration: 1000 }
     }
@@ -260,7 +263,7 @@ const VideoRating = props => {
             }}
           />
         </div>
-        <div id="videoTray">
+        <div className={css.videoTray} id="videoTray">
           {[
             ...pendingVideosData,
             ...acceptedVideosData,
@@ -275,7 +278,6 @@ const VideoRating = props => {
                     key={applicantIndex}
                     className={css.applicationStatusContainer}
                   >
-                    <div>
                       <button
                         className={
                           showApplicants === false
@@ -304,17 +306,6 @@ const VideoRating = props => {
                           )}
                         </Spring>
                       </button>
-                      {showApplicants === null && currentUid === undefined ? (
-                        <ul className={css.instructionsMessage}>
-                          <h3>
-                            {" "}
-                            Select "Pending Applications" to begin rating <br />{" "}
-                            or <br /> Adjust Pass Threshold to set the
-                            acceptance rate.{" "}
-                          </h3>{" "}
-                        </ul>
-                      ) : null}
-
                       <ul
                         className={
                           showApplicants === false
@@ -351,7 +342,6 @@ const VideoRating = props => {
                           }
                         )}
                       </ul>
-                    </div>
                     <div>
                       <button
                         className={
@@ -487,6 +477,15 @@ const VideoRating = props => {
                       </div>
                     </div>
                   </div>
+                  {showApplicants === null && currentUid === undefined ? (
+                    <ul className={css.instructionsMessage}>
+                      <h3>
+                        {" "}
+                        Select "Pending Applications" to begin rating <br /> or{" "}
+                        <br /> Adjust Pass Threshold to set the acceptance rate.{" "}
+                      </h3>{" "}
+                    </ul>
+                  ) : null}
                   {videoApplicationData.length === 0 && (
                     <p>no video application data for: {firebaseUid} </p>
                   )}

@@ -25,12 +25,16 @@
   Application Status Section
 ------------------------------*/
 
+.videoTray {
+  background-image: url(/starsBackground.png);
+}
+
 .instructionsMessage {
   background: rgba(59, 59, 59, 0.5);
-  position: absolute;
-  left: 19%;
-  right: 19%;
-  height: 60vh;
+  height: 45vh;
+  width: 60%;
+  margin: 0 auto;
+  padding: 100px 20px;
   color: white;
   display: flex;
   justify-content: center;
@@ -52,19 +56,22 @@ ul.applicantListContainer {
   display: flex;
   flex-direction: column;
   padding: 0;
-  background: rgba(1, 1, 1, 0.46);
+  background: rgba(59, 59, 59, 0.5);
+  height: 50vh;
   position: absolute;
   left: 19%;
   right: 19%;
   z-index: 1;
   opacity: 1;
   transition: 300ms ease-in-out;
+  overflow: scroll;
 }
 
 ul.hideApplicantListContainer {
   overflow: scroll;
   display: flex;
   flex-direction: column;
+  height: 45vh;
   padding: 0;
   background: rgba(1, 1, 1, 0.46);
   position: absolute;
@@ -110,6 +117,7 @@ button {
 }
 
 .applicationStatusButtonActive {
+
   background: rgba(59, 59, 59, 0.2);
   background-image: linear-gradient(
     to bottom right,
@@ -117,7 +125,6 @@ button {
     rgba(108, 122, 137, 0.33)
   );
   cursor: pointer;
-
   margin: 0 25px;
   padding: 10px;
   width: 250px;
@@ -212,7 +219,7 @@ button.applicant:hover {
   display: flex;
   color: white;
   box-shadow: 1px 1px 5px;
-  margin: 10px;
+  margin: 10px 10px 0 10px;
   border-radius: 5px;
   height: 450px;
 }
@@ -415,6 +422,7 @@ div.overallRating {
   margin: 10px;
   width: 20px;
   transition: 200ms ease-in-out;
+
   background-color: white;
   border-radius: 50%;
   padding: 1px;

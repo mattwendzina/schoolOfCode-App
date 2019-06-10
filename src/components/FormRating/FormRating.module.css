@@ -8,6 +8,7 @@ Application Status buttons
   padding: 10px;
   margin: 60px auto 0 auto;
   position: relative;
+
   left: 3.25%;
 }
 
@@ -24,6 +25,7 @@ button {
 }
 
 .applicationStatusButtonActive {
+
   background: rgba(59, 59, 59, 0.2);
   background-image: linear-gradient(
     to bottom right,
@@ -134,6 +136,14 @@ button.applicant:hover {
   cursor: pointer;
 }
 
+.listMainContainer {
+  height: 65vh;
+}
+
+.hideListMainContainer {
+  height: auto;
+}
+
 ul.applicantListContainer {
   position: absolute;
   left: 0%;
@@ -219,7 +229,7 @@ ul.hideApplicantListContainer {
 }
 
 .reasonContainer p {
-  /* height: 280px; */
+
   font-size: 28px;
   padding: 10px;
   display: flex;

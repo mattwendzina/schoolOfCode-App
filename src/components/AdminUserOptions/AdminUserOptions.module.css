@@ -3,6 +3,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+
   height: 45%;
   margin-top: 7%;
 }
@@ -40,7 +41,6 @@
 
 .cardContainer {
   width: 300px;
-  height: 200px;
   background-color: rgba(108, 122, 137, 0.2);
   border-radius: 5px;
   text-align: center;

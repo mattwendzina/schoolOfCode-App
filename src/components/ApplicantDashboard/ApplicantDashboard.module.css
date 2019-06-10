@@ -192,20 +192,11 @@ p {
 }
 
 .stepPassed {
-  position: absolute;
-  /* background-color: rgba(13, 135, 192, 0.185); */
-
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  /* color: #7219ff; */
+  height: 80%;
+  width: 80%;
+  margin: 10px;
+  margin: 0 auto;
   color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 30px;
   z-index: 1;
 }
 
@@ -223,8 +214,18 @@ p {
   height: 100px;
   background: white;
   border-radius: 5px;
-  box-shadow: 1px 1px 5px;
   position: relative;
+  height: 100px;
+  color: white;
+  box-shadow: 0 0 5px;
+  transition: 300ms ease-in-out;
+}
+
+.stepCard:hover {
+  box-shadow: 0 0 10px;
+}
+
+=======
   bottom: 5%;
 
   /* width: 80%; */
@@ -267,6 +268,7 @@ p {
   display: flex;
   align-items: center;
   padding: 15px 5px;
+  color: black;
 }
 
 .stepsContainer p {
@@ -277,6 +279,7 @@ p {
   justify-content: center;
   padding: 35px 5px;
   text-align: center;
+  color: black;
   font-weight: bold;
 }
 
@@ -295,17 +298,28 @@ p {
   font-weight: bold;
   font-size: 35px;
 }
+
+.astronautFlag {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  justify-content: center;
+}
+
 .astronautFlag img {
-  position: relative;
-  opacity: 0.9;
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
 }
 
 .earthGlobe {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  width: 200px;
-  height: 200px;
+  width: 40%;
+  height: 40%;
+  object-fit: contain;
   bottom: 10%;
 }
 .lockImage {
